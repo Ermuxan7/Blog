@@ -1,0 +1,15 @@
+
+
+
+{% block content %}
+    {% if user.is_valid_authenticated %}
+        {% for vlog in blogs %}
+            <a href="{% url 'vlog_detail' vlog.pk %}">
+                <img src="{{ vlog.image.url }}" alt="foto" 
+                style="width: 350px; height: 300px; margin-left: 50px; margin-top: 50px;">
+            </a>
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+{% endblock %}

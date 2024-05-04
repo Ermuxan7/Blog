@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #76453B;
+            color: #fff;
+        }
+
+        .container{
+            margin-top: 80px;
+            margin-left: 400px;
+            width: 800px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0.3);
+            background-color: #2B2A4C;
+            padding: 10px 20px;
+            border-radius: 15px;
+        }
+
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+        }
+
+        .container h2{
+            text-align: center;
+        }
+
+        .content img{
+            width: 450px;
+            height: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 1, 0.8);
+            border-radius: 10px;
+        }
+
+        .delete-btn{
+            width: 150px;
+            margin-top: 15px;
+            position: absolute;
+            cursor: pointer;
+            right: 50px;
+            padding: 10px;
+            background-color: #E72929;
+            color: #fff;
+            font-size: large;
+            font-weight: 400;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+            border: none;
+            border-radius: 30px;
+            transition: all 0.1s ease-in;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover{
+            transform: scale(1.1);
+        }
+
+        .delete-btn i{
+            font-size: 20px;
+        }
+
+        .delete-btn:active{
+            background-color: #561C24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{{ blog.title }}</h2>
+        <div class="content">
+            {% block content %}
+                <img src="{{ blog.image.url }}" alt="foto">
+            {% endblock %}
+        </div>
+        <p>{{ blog.description }}</p>
+        <p>{{ blog.created }}</p>
+    </div>
+    <div class="btn">
+        <a href="/blogs/delete/">
+            <button class="delete-btn">
+                <i class='bx bxs-trash-alt'></i> Delete
+            </button>
+        </a>       
+        
+    </div>
+</body>
+</html>

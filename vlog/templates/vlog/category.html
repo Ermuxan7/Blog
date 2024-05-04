@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% for vlog in blogs %}
+        <a href="{% url 'vlog_detail' vlog.pk %}">
+            <img src="{{ vlog.image.url }}" class="img" alt="foto">
+        </a>
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,120 @@
+    <!-- {% url 'blog_detail' blog.pk %} -->
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Vlog</title>
+    <style>
+        body{
+            padding: 15px 80px;
+            background-color: #50727B;
+            color: #fff;
+        }
+
+        .title{
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 35px;
+            font-style: italic;
+            color: #BEADFA;
+        }
+
+        .title span{
+            color: #F4CE14;
+            font-weight: bolder;
+        }
+
+        .content{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 25px;
+
+        }
+
+        .item{
+            padding: 10px 8px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 600px;
+            height: 500px;
+            box-shadow: 0 5px 10px rgb(0, 0, 0, 0.4);
+            background-color: #436850;
+        }
+
+        .img{
+            width: 360px;
+            height: 300px;
+        }
+
+        .create-btn{
+            width: 150px;
+            margin-top: 15px;
+            position: absolute;
+            cursor: pointer;
+            right: 50px;
+            padding: 10px;
+            background-color: #F4CE14;
+            font-size: large;
+            font-weight: 400;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+            border: none;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.1s ease-in;
+        }
+        
+        .create-btn:hover{
+            transform: scale(1.1);
+        }
+
+        .create-btn i{
+            font-size: 24px;
+        }
+
+        .create-btn:active{
+            background-color: #994D1C;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% block title %}
+        <h2 class="title"><span>Ermuxan</span> vlog</h2>
+    {% endblock %}
+    <div class="content">
+    {% block content %}
+        {% for vlog in blogs %}
+            <div class="item">
+                <div class="info">
+                    <h2>{{vlog.title}}</h2>
+                    <a href="{% url 'vlog_detail' vlog.pk %}"><img src="{{ vlog.image.url }}" class="img" alt="foto"></a>
+                    <p>{{ vlog.description }}</p>
+                    <p>{{ vlog.created }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+        <div class="btn">
+            <a href="/blogs/create/">
+                <button class="create-btn">
+                    <i class='bx bx-plus'></i>Create
+                </button>
+            </a>       
+        </div>
+
+    {% endblock %}
+</body>
+</html>
